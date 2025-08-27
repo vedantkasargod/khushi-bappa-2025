@@ -1,0 +1,347 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Updated color palette for Ganpati festival theme */
+  --background: #ffffff; /* White for main background */
+  --foreground: #374151; /* Dark gray for primary text */
+  --card: #fefce8; /* Light beige for card backgrounds */
+  --card-foreground: #374151; /* Dark gray text on cards */
+  --popover: #ffffff; /* White for popover backgrounds */
+  --popover-foreground: #374151; /* Dark gray text in popovers */
+  --primary: #d97706; /* Saffron orange for main action elements */
+  --primary-foreground: #ffffff; /* White text on primary elements */
+  --secondary: #0891b2; /* Turquoise for accent elements */
+  --secondary-foreground: #ffffff; /* White text on secondary elements */
+  --muted: #fefce8; /* Light beige for muted elements */
+  --muted-foreground: #374151; /* Dark gray for muted text */
+  --accent: #0891b2; /* Turquoise for accent buttons and highlights */
+  --accent-foreground: #ffffff; /* White text on accent elements */
+  --destructive: #f87171; /* Red for destructive actions */
+  --destructive-foreground: #ffffff; /* White text on destructive elements */
+  --border: #d1d5db; /* Light gray for borders */
+  --input: #fefce8; /* Light beige for input backgrounds */
+  --ring: rgba(0, 0, 0, 0.2); /* Soft shadow for focus rings */
+
+  /* Festival-specific color variables */
+  --festival-dark: #1a1a1a; /* Very dark charcoal for dark sections */
+  --festival-light: #fff8f0; /* Warm creamy off-white */
+  --festival-saffron: #ff9933; /* Vibrant saffron orange */
+  --festival-turquoise: #40e0d0; /* Deep rich turquoise */
+
+  --chart-1: #d97706;
+  --chart-2: #0891b2;
+  --chart-3: #fefce8;
+  --chart-4: #374151;
+  --chart-5: #ffffff;
+  --radius: 0.5rem;
+  --sidebar: #fefce8;
+  --sidebar-foreground: #374151;
+  --sidebar-primary: #d97706;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #0891b2;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #d1d5db;
+  --sidebar-ring: rgba(0, 0, 0, 0.2);
+}
+
+.dark {
+  /* Dark mode colors for festival theme */
+  --background: #1a1a1a; /* Festival dark background */
+  --foreground: #ffffff; /* White text in dark mode */
+  --card: #1a1a1a;
+  --card-foreground: #ffffff;
+  --popover: #1a1a1a;
+  --popover-foreground: #ffffff;
+  --primary: #ff9933; /* Festival saffron in dark mode */
+  --primary-foreground: #1a1a1a;
+  --secondary: #40e0d0; /* Festival turquoise in dark mode */
+  --secondary-foreground: #1a1a1a;
+  --muted: #2a2a2a;
+  --muted-foreground: #a1a1aa;
+  --accent: #40e0d0;
+  --accent-foreground: #1a1a1a;
+  --destructive: #f87171;
+  --destructive-foreground: #ffffff;
+  --border: #2a2a2a;
+  --input: #2a2a2a;
+  --ring: rgba(255, 255, 255, 0.2);
+  --chart-1: #ff9933;
+  --chart-2: #40e0d0;
+  --chart-3: #2a2a2a;
+  --chart-4: #ffffff;
+  --chart-5: #1a1a1a;
+  --sidebar: #1a1a1a;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ff9933;
+  --sidebar-primary-foreground: #1a1a1a;
+  --sidebar-accent: #40e0d0;
+  --sidebar-accent-foreground: #1a1a1a;
+  --sidebar-border: #2a2a2a;
+  --sidebar-ring: rgba(255, 255, 255, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+
+  /* Festival-specific color tokens */
+  --color-festival-dark: var(--festival-dark);
+  --color-festival-light: var(--festival-light);
+  --color-festival-saffron: var(--festival-saffron);
+  --color-festival-turquoise: var(--festival-turquoise);
+
+  /* Font configuration for festival theme */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  /* Custom scroll behavior for smooth animations */
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom animations for festival elements */
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
+
+  /* Added gentle floating animation for hero section leaves */
+  @keyframes gentle-float {
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    33% {
+      transform: translateY(-8px) rotate(2deg);
+    }
+    66% {
+      transform: translateY(4px) rotate(-1deg);
+    }
+  }
+
+  @keyframes pulse-glow {
+    0%,
+    100% {
+      box-shadow: 0 0 5px rgba(255, 153, 51, 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(255, 153, 51, 0.8);
+    }
+  }
+
+  /* Added Om symbol glow animation for Sacred Opening */
+  @keyframes om-glow {
+    0%,
+    100% {
+      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5), 0 0 40px rgba(255, 215, 0, 0.3);
+      filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.4));
+    }
+    50% {
+      text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 215, 0, 0.5), 0 0 80px rgba(255, 215, 0, 0.3);
+      filter: drop-shadow(0 0 20px rgba(255, 215, 0, 0.6));
+    }
+  }
+
+  @keyframes leaf-scale {
+    from {
+      transform: scale(1.5) rotate(0deg);
+    }
+    to {
+      transform: scale(0.2) rotate(5deg);
+    }
+  }
+
+  /* Added timeline-specific animations for scroll-driven effects */
+  @keyframes timeline-draw {
+    from {
+      height: 0%;
+    }
+    to {
+      height: 100%;
+    }
+  }
+
+  @keyframes leaf-pulse {
+    0%,
+    100% {
+      transform: scale(1);
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+    }
+    50% {
+      transform: scale(1.1);
+      filter: drop-shadow(0 8px 16px rgba(255, 153, 51, 0.4));
+    }
+  }
+
+  @keyframes slide-in-right {
+    from {
+      opacity: 0;
+      transform: translateX(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  /* Added polaroid slide-out animation for pass generation */
+  @keyframes slideOut {
+    0% {
+      transform: translateX(-50%) translateY(-20px);
+      opacity: 0;
+    }
+    50% {
+      transform: translateX(-50%) translateY(40px);
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(-50%) translateY(100px);
+      opacity: 1;
+    }
+  }
+
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  /* Added gentle floating animation class for hero leaves */
+  .animate-gentle-float {
+    animation: gentle-float 4s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  /* Added Om glow animation class */
+  .animate-om-glow {
+    animation: om-glow 3s ease-in-out infinite;
+  }
+
+  .animate-leaf-scale {
+    animation: leaf-scale 1s ease-out forwards;
+  }
+
+  /* Added timeline animation classes */
+  .animate-timeline-draw {
+    animation: timeline-draw 2s ease-out forwards;
+  }
+
+  .animate-leaf-pulse {
+    animation: leaf-pulse 2s ease-in-out infinite;
+  }
+
+  .animate-slide-in-right {
+    animation: slide-in-right 0.6s ease-out forwards;
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up 0.6s ease-out forwards;
+  }
+
+  /* Added polaroid slide animation class */
+  .animate-slide-out {
+    animation: slideOut 2s ease-out forwards;
+  }
+
+  /* Added responsive timeline styles for mobile-first design */
+  .timeline-line {
+    position: relative;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.1));
+  }
+
+  .timeline-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: linear-gradient(to bottom, #ff9933, #d97706);
+    transition: height 0.3s ease-out;
+  }
+
+  /* Mobile timeline positioning */
+  @media (max-width: 768px) {
+    .timeline-container {
+      padding-left: 2rem;
+    }
+
+    .timeline-line {
+      left: 2rem;
+    }
+  }
+
+  /* Desktop timeline positioning */
+  @media (min-width: 768px) {
+    .timeline-container {
+      padding-left: 2.5rem;
+    }
+
+    .timeline-line {
+      left: 2.5rem;
+    }
+  }
+}
