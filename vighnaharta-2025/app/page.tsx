@@ -1070,7 +1070,7 @@ export default function VighnahartraPage() {
                         variant="ghost"
                         className="w-full text-white/70 bg-white/10 hover:bg-white/20 hover:text-white border border-white/20 hover:border-white/30 font-semibold py-2 px-6 rounded-full shadow-md transition-all duration-220 ease-in-out transform hover:scale-105"
                       >
-                        Create Another Pass
+                        Create another Polaroid
                       </Button>
                     </div>
                   ) : (
