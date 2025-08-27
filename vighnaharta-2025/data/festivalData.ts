@@ -85,7 +85,7 @@ export const organizers = [
     name: "Maan ",
     role: "",
     bio: "Dada Maan Singh😳",
-    image: "",
+    image: "maan-building.jpg",
   },
   {
     name: "Veer Chitroda",
@@ -97,13 +97,12 @@ export const organizers = [
     name: "Havisha Kasargod",
     role: "",
     bio: "",
-    image: "",
+    image: "havisha-kasargod.jpg",
   },
   {
     name: "Manas Rajgole",
     role: "",
     bio: "Manas bhai ke aage koi bol skta hai kya....",
-    image: "",
+    image: "manas-rajgole.jpg",
   },
 ]
-

@@ -14,6 +14,18 @@ import { useScrollAnimation, useHeroScrollAnimation, useScheduleRevealAnimation 
 import { festivalDays, organizers } from "@/data/festivalData"
 import { cn } from "@/lib/utils"
 import NextImage from "next/image"
+import { Playfair_Display, Great_Vibes } from "next/font/google"
+
+const playfair = Playfair_Display({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+})
+
+// Register Great Vibes so it's available to the canvas via document.fonts
+const greatVibes = Great_Vibes({
+  subsets: ["latin"],
+  weight: "400",
+})
 
 // Helper component for image loading with retry
 const ParticipantImage: React.FC<{ src: string; alt: string }> = memo(({ src, alt }) => {
@@ -617,8 +629,18 @@ export default function VighnahartraPage() {
             const detailsFontSize = isMobile ? 18 : 30;
             const lineSpacing = isMobile ? 40 : 55;
             
+            // Ensure Great Vibes is loaded for canvas text
+            try {
+              if (typeof document !== "undefined" && (document as any).fonts && typeof (document as any).fonts.load === "function") {
+                await (document as any).fonts.load(`normal ${nameFontSize}px "Great Vibes"`)
+                await (document as any).fonts.load(`normal ${detailsFontSize}px "Great Vibes"`)
+              }
+            } catch (e) {
+              // If font loading fails, continue with fallback
+            }
+
             ctx.fillStyle = "#333" // Darker text color
-            ctx.font = `bold ${nameFontSize}px 'Permanent Marker', cursive`; // Responsive font size
+            ctx.font = `${nameFontSize}px "Great Vibes"`; // Use only Great Vibes
             ctx.textAlign = "center";
             ctx.shadowColor = "rgba(0, 0, 0, 0.2)"; // Softer shadow
             ctx.shadowBlur = 3;
@@ -626,13 +648,13 @@ export default function VighnahartraPage() {
             ctx.shadowOffsetY = 1;
             ctx.fillText(formData.name, canvas.width / 2, photoArea.y + photoArea.height + (lineSpacing + 15)); // Adjusted Y position
 
-            ctx.font = `${detailsFontSize}px 'Permanent Marker', cursive`; // Responsive font size
+            ctx.font = `${detailsFontSize}px "Great Vibes"`; // Use only Great Vibes
             ctx.shadowColor = "rgba(0, 0, 0, 0.1)"; // Even lighter shadow
             ctx.shadowBlur = 2;
             ctx.shadowOffsetX = 1;
             ctx.shadowOffsetY = 1;
             ctx.fillText(`Flat ${formData.flatNumber}`, canvas.width / 2, photoArea.y + photoArea.height + (lineSpacing * 2)); // Adjusted Y position
-            ctx.fillText("Vighnaharta 2025", canvas.width / 2, photoArea.y + photoArea.height + (lineSpacing * 3)); // Adjusted Y position
+            ctx.fillText("Khushi Residency Co. Op. Society", canvas.width / 2, photoArea.y + photoArea.height + (lineSpacing * 3)); // Adjusted Y position
 
             // Add a subtle rotation to the entire canvas for a more "placed" look (reduced on mobile)
             const rotationAngle = (Math.random() * (isMobile ? 3 : 6) - (isMobile ? 1.5 : 3)) * Math.PI / 180; // Reduced rotation on mobile
@@ -1140,7 +1162,7 @@ export default function VighnahartraPage() {
                   <div className="w-full h-48 relative overflow-hidden rounded-md mb-4"> {/* Added fixed height and relative positioning */}
                     <ParticipantImage src={participant.imageUrl || "/placeholder.svg"} alt={participant.name} />
                   </div>
-                  <div className="mt-4 text-center">
+                  <div className={`mt-4 text-center ${playfair.className}`}>
                     <p className="text-lg font-semibold text-foreground">{participant.name}</p>
                     <p className="text-sm text-muted-foreground">Flat: {participant.flatNumber}</p>
                     <div className="flex justify-center space-x-2 mt-4 z-10">

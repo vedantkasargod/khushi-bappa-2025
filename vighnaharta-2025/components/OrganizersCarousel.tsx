@@ -2,6 +2,12 @@
 
 import { useState, useRef, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Caveat } from "next/font/google"
+
+const caveat = Caveat({
+  subsets: ["latin"],
+  weight: ["700"],
+})
 
 export function OrganizersCarousel({ organizers, isAdmin = false }: { organizers: any[]; isAdmin?: boolean }) {
   const [currentIndex, setCurrentIndex] = useState(0)
@@ -264,6 +270,11 @@ export function OrganizersCarousel({ organizers, isAdmin = false }: { organizers
               aria-label={`Go to organizer ${index + 1}`}
             />
           ))}
+        </div>
+
+        {/* Instruction text under dots */}
+        <div className={`text-center mt-4 sm:mt-6 text-xl sm:text-4xl font-bold ${caveat.className}`}>
+          Click on the profiles to send them a secret message. You remain anonymous.
         </div>
       </div>
 
